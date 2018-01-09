@@ -1,5 +1,8 @@
-FROM python:3.6-alpine
+FROM python:3.6-slim
 MAINTAINER Ahmad Harminto <harminto_ahmad@live.com>
+
+RUN apt-get update && apt-get install -qq -y \
+    build-essential libpq-dev --no-install-recommends
 
 ENV INSTALL_PATH /web_app
 RUN mkdir -p $INSTALL_PATH
