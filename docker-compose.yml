@@ -15,7 +15,7 @@ services:
     ports:
       - '9090:9090'
 
-  postgresql:
+  postgres:
     image: 'postgres:9.6'
     environment:
       POSTGRES_USER: 'postgres'
@@ -26,4 +26,4 @@ services:
       - '5434:5432'
 
 volumes:
-  postgresql:
+  postgres:
