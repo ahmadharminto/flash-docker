@@ -10,9 +10,13 @@ For login into instance, then initialize migrations :
 
 Command migrations version table from instance :
 > alembic revision --autogenerate -m "comment"
+
 > alembic upgrade head
+
 > alembic downgrade -1
+
 > alembic downgrade base
+
 > alembic history
 
 For recreate initial migration scripts from instance :
