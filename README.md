@@ -1,5 +1,9 @@
+<p align="center"><img src="https://www.python.org/static/img/python-logo@2x.png"></p>
+
 # flask-docker
 Implementation flask using docker (hot reload)
+
+## How to
 
 For start instance :
 > sudo docker-compose up --build
