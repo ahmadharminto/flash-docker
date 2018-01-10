@@ -6,6 +6,7 @@ For start instance :
 
 For login into instance, then initialize migrations :
 > sudo docker-compose exec web_app bash
+
 > alembic init migrations
 
 Command migrations version table from instance :
