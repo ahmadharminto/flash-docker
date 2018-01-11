@@ -1,5 +1,8 @@
-flask
 gunicorn
+flask
 psycopg2
-flask-sqlalchemy
 alembic
+flask-sqlalchemy==2.3
+sqlalchemy==1.2.0b3
+flask-admin
+flask-wtf
