@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 from web_app.models import db, Page, Menu
+from web_app.views import PageModelView
 
 
 def create_app():
@@ -12,19 +13,31 @@ def create_app():
 
     admin=Admin(app, name='Flask-Docker', template_mode='bootstrap3')
     admin.add_view(ModelView(Menu, db.session))
-    admin.add_view(ModelView(Page, db.session))
+    admin.add_view(PageModelView(Page, db.session))
 
     @app.route('/')
-    def index():
-        page=Page.query.filter_by(id=1).first()
+    @app.route('/<url>')
+    def index(url=None):
         content=''
+        page=None
+
+        if url is not None:
+            page=Page.query.filter_by(url=url).first()
+        else:
+            page=Page.query.filter_by(is_homepage=True).first()
+
         if page is not None:
             content=page.content
-        return render_template('index.html', TITLE='Flask-Docker', CONTENT=content)
 
+        menu=Menu.query.order_by('order').all()
+
+        return render_template('index.html', TITLE='Flask-Docker', CONTENT=content, MENU=menu)
+
+    '''
     @app.route('/about')
     def about():
         return render_template('about.html', TITLE='Flask-Docker')
+    '''
 
     @app.route('/db_test')
     def db_test():

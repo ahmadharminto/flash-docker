@@ -5,6 +5,10 @@ Implementation flask using docker (hot reload)
 
 ## How to
 
+Config : 
+* web_app/settings.py
+* migrations/env.py
+
 For start instance :
 > sudo docker-compose up --build
 
