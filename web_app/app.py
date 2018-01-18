@@ -7,7 +7,7 @@ from flask_login import login_required
 from flask_security import SQLAlchemyUserDatastore, Security
 
 from web_app.models import db, Page, Menu, Role, User
-from web_app.views import PageModelView, MenuModelView, SecureAdminIndexView
+from web_app.views import PageModelView, MenuModelView, SecureAdminIndexView, RoleModelView, UserModelView
 
 
 def create_app():
@@ -19,6 +19,8 @@ def create_app():
     admin=Admin(app, name='Flask-Docker CPanel', template_mode='bootstrap3', index_view=SecureAdminIndexView())
     admin.add_view(MenuModelView(Menu, db.session, menu_icon_type=ICON_TYPE_FONT_AWESOME, menu_icon_value='fa-list'))
     admin.add_view(PageModelView(Page, db.session, menu_icon_type=ICON_TYPE_FONT_AWESOME, menu_icon_value='fa-file-o'))
+    admin.add_view(RoleModelView(Role, db.session, menu_icon_type=ICON_TYPE_FONT_AWESOME, menu_icon_value='fa-users'))
+    admin.add_view(UserModelView(User, db.session, menu_icon_type=ICON_TYPE_FONT_AWESOME, menu_icon_value='fa-user-o'))
 
     user_datastore=SQLAlchemyUserDatastore(db, User, Role)
     security=Security(app, user_datastore)

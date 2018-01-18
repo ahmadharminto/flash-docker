@@ -49,3 +49,9 @@ class PageModelView(AdminOnlyView):
 
 class MenuModelView(AdminOnlyView):
     pass
+
+class UserModelView(AdminOnlyView):
+    column_list=('email', 'active', 'confirmed_at')
+
+class RoleModelView(AdminOnlyView):
+    pass
