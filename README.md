@@ -33,4 +33,5 @@ For recreate initial migration scripts from instance :
 
 pip :
 > pip freeze > requirements.txt (for exporting required modules)
+
 > pip install -r requirements.txt (for installing required modules)
